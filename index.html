@@ -6,12 +6,29 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.23/cr-1.5.3/fc-3.3.2/fh-3.1.7/r-2.2.7/sb-1.0.1/sp-1.2.2/datatables.min.css"/>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.23/cr-1.5.3/fc-3.3.2/fh-3.1.7/r-2.2.7/sb-1.0.1/sp-1.2.2/datatables.min.js"></script>
-	<title>Retailers - Dice Refs</title>
+	<title>Retailers - drake-p/	dice-refs</title>
 </head>
 <body>
+	<h1>Retailers data table</h1>
+	<p>
+		List maintained by Drake P.
+		See something wrong?
+		<a href="https://github.com/drake-p/dice-refs/issues" target="_blank">Submit an issue</a>.
+	</p>
+	<p>
+		This list is very much a work in progress. In addition to adding/completing more retailers,
+		the following todos are on my future wishlist:
+		<ul>
+		  <li>expandable rows with more information (e.g. comments)</li>
+		  <li>price ranges (plastic 7-die set), or more benchmarks (HD standard, Udixi standard)</li>
+		  <li>summaries: lowest benchmark, lowest free shipping threshold, brand count</li>
+		  <li>commentary: favorites</li>
+		</ul>
+	</p>
+
 	<table id="dice-retailers" class="display" width="100%"></table>
 
-	<p><sup>*</sup> Note that the Udixi acrylic glitter is specifically the oversize set with calligraphy font</p>
+	<!-- <p><sup>*</sup> Note that the Udixi acrylic glitter is specifically the oversize set with calligraphy font</p> -->
 
 	<style>
 	.benchmarks,
@@ -24,14 +41,6 @@
 	const undefined_minimum_shipping = 8888;
 	const no_minimum_shipping = 9999;
 
-		/** TODO:
-		  * expandable rows
-		  * price ranges (plastic 7-die set), or more benchmarks (HD standard, Udixi standard)
-		  * summaries: lowest benchmark, lowest free shipping threshold
-		  * commentary: favorites
-		  * get a domain name
-		  */
-
 	var dataset = [{
 		"name": "Awesome Dice",
 		"url": "https://www.awesomedice.com",
@@ -40,7 +49,7 @@
 		"price benchmark": {
 			"Chessex opaque": "$3.85",
 			"Chessex standard": "$9.98",
-			"Udixi acrylic glitter*": "$12.99",
+			// "Udixi acrylic glitter*": "$12.99",
 			"Udixi conch": "$11.50",
 		},
 		"selection": "medium",
@@ -58,7 +67,7 @@
 		"minimum reduced shipping": undefined_minimum_shipping,
 		"price benchmark": {
 			"Chessex standard": "£10.00",
-			"Udixi acrylic glitter*": "£9.00",
+			// "Udixi acrylic glitter*": "£9.00",
 			"Udixi conch": "£12.00",
 		},
 		"selection": "medium",
@@ -77,7 +86,7 @@
 		"price benchmark": {
 			"Chessex standard": "$9.98",
 			"HD Ancient": "$8.49",
-			"Udixi acrylic glitter*": "$9.99",
+			// "Udixi acrylic glitter*": "$9.99",
 		},
 		"selection": "wide",
 		"ships from": "US - Illinois",
@@ -295,7 +304,7 @@
 		"minimum reduced shipping": 35.00,
 		"price benchmark": {
 			"HD Ancient": "$7.00",
-			"Udixi acrylic glitter*": "$7.25",
+			// "Udixi acrylic glitter*": "$7.25",
 			"Udixi conch": "$9.50",
 		},
 		"selection": "wide",
@@ -303,8 +312,8 @@
 		"brands": "Bescon, Chessex (soon), HD Dice, Q Workshop (soon), Udixi, ++",
 		"brand IDs": "Manufacturer SKU listed on each set",
 		"dice renamed": "Yes",
-		"filtering": "A",
-		"best for": "HD Dice / Udixi variety; dice IDs",
+		"filtering": "A (brand! filters!)",
+		"best for": "Variety; dice IDs",
 		"notes": "Haven’t done a lot of research yet, but they have a huge selection and can be counted on for a lot of Bescon and HD Dice stock at solid prices. Their filters sidebar is pretty legit, and recently added ability to filter by manufacturer. They also sell some cool tabletop tools like condition rings."
 	}, {
 		"name": "Yvis Nerd and Geek World",
@@ -368,7 +377,7 @@
 						return data;
 					}
 				},
-				{title: 'Good For', data: 'best for'},
+				{title: 'Good For', orderable: false, data: 'best for'},
 				{title: 'Ships From', data: 'ships from', searchable: false, className: 'ship-from'},
 				{title: 'Brands', data: 'brands'},
 				{title: 'Brand IDs', data: 'brand IDs', searchable: false},
