@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.23/cr-1.5.3/fc-3.3.2/fh-3.1.7/r-2.2.7/sb-1.0.1/sp-1.2.2/datatables.min.css"/>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.23/cr-1.5.3/fc-3.3.2/fh-3.1.7/r-2.2.7/sb-1.0.1/sp-1.2.2/datatables.min.js"></script>
+	<title>Retailers - Dice Refs</title>
+</head>
+<body>
+	<table id="dice-retailers" class="display" width="100%"></table>
+
+	<p><sup>*</sup> Note that the Udixi acrylic glitter is specifically the oversize set with calligraphy font</p>
+
+	<style>
+	.benchmarks,
+	.ship-from {
+		white-space: nowrap;
+	}
+	</style>
+
+	<script>
+	const undefined_minimum_shipping = 8888;
+	const no_minimum_shipping = 9999;
+
+		/** TODO:
+		  * expandable rows
+		  * price ranges (plastic 7-die set), or more benchmarks (HD standard, Udixi standard)
+		  * summaries: lowest benchmark, lowest free shipping threshold
+		  * commentary: favorites
+		  * get a domain name
+		  */
+
+	var dataset = [{
+		"name": "Awesome Dice",
+		"url": "https://www.awesomedice.com",
+		"shipping": "99¢ on $35+; Free on $50+",
+		"minimum reduced shipping": 35.00,
+		"price benchmark": {
+			"Chessex opaque": "$3.85",
+			"Chessex standard": "$9.98",
+			"Udixi acrylic glitter*": "$12.99",
+			"Udixi conch": "$11.50",
+		},
+		"selection": "medium",
+		"ships from": "US - Alabama",
+		"brands": "Chessex, Q Workshop, Udixi, +",
+		"brand IDs": "no",
+		"dice renamed": "?",
+		"filtering": "C",
+		"best for": "Q Workshop selection, low prices",
+		"notes": "I’ve picked up a bunch of Chessex and Q Workshop sets from here because they had decent prices. Also, you can get free or reduced shipping if you buy enough sets. They do not list manufacturers, so you’re probably best knowing what you want going in."
+	}, {
+		"name": "Beholder’s Gaze",
+		"url": "https://www.beholdersgaze.com",
+		"shipping": "?",
+		"minimum reduced shipping": undefined_minimum_shipping,
+		"price benchmark": {
+			"Chessex standard": "£10.00",
+			"Udixi acrylic glitter*": "£9.00",
+			"Udixi conch": "£12.00",
+		},
+		"selection": "medium",
+		"ships from": "UK",
+		"brands": "Chessex, HD Dice, Udixi, originals, ++",
+		"brand IDs": "no",
+		"dice renamed": "?",
+		"filtering": "B",
+		"best for": "UK orders",
+		"notes": "They seem to list new Udixi dice for preorder pretty quickly. They also offer some originals. Since they’re in the UK, I’ve only bought from them once to pick up one of their original sets."
+	}, {
+		"name": "Bryce's Dice",
+		"url": "https://brycesdice.com/",
+		"shipping": "Free on $9.99+",
+		"minimum reduced shipping": 9.99,
+		"price benchmark": {
+			"Chessex standard": "$9.98",
+			"HD Ancient": "$8.49",
+			"Udixi acrylic glitter*": "$9.99",
+		},
+		"selection": "wide",
+		"ships from": "US - Illinois",
+		"brands": "Chessex, HD Dice, Udixi",
+		"brand IDs": "yes",
+		"dice renamed": "?",
+		"filtering": "B (but you can filter by brand!)",
+		"best for": "OOP Chessex; single-set orders",
+		"notes": "Offer some rare/oop dice, which is cool. Also sell some random assortments by sidedness. They’ve also run a couple kickstarters for neat exclusive dice. Their shipping deal is especially nice—it’s virtually the same as free shipping on any one set, which is good if you don’t like to buy a bunch at once!"
+	}, {
+		"name": "CozyGamer",
+		"url": "https://cozygamer.com",
+		"shipping": "Free on $35+ (code FREESHIPPING)",
+		"minimum reduced shipping": 35.00,
+		"price benchmark": {
+			"HD Ancient": "$11.99",
+			"Udixi conch": "$13.99",
+		},
+		"selection": "wide",
+		"ships from": "US - Oregon",
+		"brands": "HD Dice, Udixi, originals, ++",
+		"brand IDs": "no",
+		"dice renamed": "yes",
+		"filtering": "B (but tricky on tablet)",
+		"best for": "originals; first-time buyers",
+		"notes": "A tastefully curated selection of the very sparkliest dice. Full sets only. They offer some lovely originals as well. I’ve bought a couple of their originals as well as some other sets and was very happy."
+	}, {
+		"name": "Dark Elf Dice",
+		"url": "https://darkelfdice.com",
+		"shipping": "no deal",
+		"minimum reduced shipping": no_minimum_shipping,
+		"price benchmark": {
+			"HD Ancient": "$9.98",
+			"Chessex opaque": "$4.65",
+			"Chessex standard": "$9.98",
+		},
+		"selection": "wide",
+		"ships from": "US",
+		"brands": "Chessex, HD Dice, Q Workshop, +++",
+		"brand IDs": "yes",
+		"dice renamed": "no",
+		"filtering": "C",
+		"best for": "variety; dice IDs",
+		"notes": "I’ve ordered from them several times. They have a really wide selection, and you can search by a bunch of parameters including color. (I also use them as a first stop for dice IDs, but note that the label Valhalla Dice is confusingly used for a number of brands, including HD Dice and possibly Bescon.)"
+	}, {
+		"name": "The Dice Emporium",
+		"url": "https://diceemporium.com",
+		"shipping": "Free domestic on $20+",
+		"minimum reduced shipping": 20,
+		"price benchmark": {
+			"HD Ancient": "$5.39",
+			"Chessex opaque": "$3.85",
+			"Chessex standard": "$9.98",
+			"Udixi conch": "$9.99",
+		},
+		"selection": "medium",
+		"ships from": "US - Minnesota",
+		"brands": "Chessex, Farkel, HD Dice, Koplow, Top Imprint, Udixi",
+		"brand IDs": "yes",
+		"dice renamed": "no",
+		"filtering": "B",
+		"best for": "lowest prices, single dice, dice IDs",
+		"notes": "Don’t let their outdated website design scare you off, although they are probably best viewed on desktop. They let you browse by manufacturer, and they list dice by the manufacturer’s name and SKU. They sell many sets as singles in any sidedness, so I'll be using that to pick up a bunch of cool d8s most likely. (Nobody sells individual d8s! So many character abilities are d8-based but it's so hard to find just d8s in cool colors!) Also, I love their random 10-dice grab bags; you usually get at least a couple interesting things. Their newsletter is probably worth your time—no spam, just new product announcements and coupon codes every month or two."
+	}, {
+		"name": "Dice Envy",
+		"url": "https://diceenvy.com",
+		"shipping": "?",
+		"minimum reduced shipping": undefined_minimum_shipping,
+		"price benchmark": {
+			"HD Ancient": "$13.95",
+		},
+		"selection": "limited",
+		"ships from": "US - California",
+		"brands": "HD Dice, originals, +",
+		"brand IDs": "no",
+		"dice renamed": "yes",
+		"filtering": "D-",
+		"best for": "originals",
+		"notes": "Seriously? I can’t even filter your exclusives? Eh whatever, their whole gimmick seems to be a high level of curation. If you feel like scrolling through three pages of All The Dice They Have then this is the place for you. Maybe you’d better just sign up for their stupid expensive Mystery Set or Subscription Box and trust them to decide for you. Or maybe you’d like to spend $14 on a set of HD Dice Ancients that you can get literally anywhere else for under $10. They do have some originals, but good luck figuring out which ones they are. I don’t know if you picked up on this, but I’ve never actually bought anything from here. OKAY I have one final gripe! It is that they fall victim to one of the, in my book, cardinal sins, namely: they have a range of dice called Dragon Dice which have nothing whatsoever to do with dragons. Seriously, when Die Hard Dice is offering their scaled Drakona sets and I have seen not one but THREE Kickstarters for metal dice with actual dragons on them? I have to laugh. Not to show my Dutch Midwesterner, but oh they're in California that explains so much."
+	}, {
+		"name": "Dice Game Depot",
+		"url": "https://www.dicegamedepot.com",
+		"shipping": "?",
+		"minimum reduced shipping": undefined_minimum_shipping,
+		"price benchmark": {
+			"Chessex opaque": "$3.85",
+			"Chessex standard": "$9.25",
+		},
+		"selection": "medium (lots of non-polyhedrals)",
+		"ships from": "US?",
+		"brands": "Chessex, Q Workshop, Wiz Dice, +",
+		"brand IDs": "yes",
+		"dice renamed": "no",
+		"filtering": "B",
+		"best for": "single dice; lowest prices",
+		"notes": "They really do mean all dice games, so expect a lot of board game-specific sets and casino dice in addition to RPG sets. However they do sell a lot of Chessex sets by dice type, which can be hard to find elsewhere. They also offer some bulk deals. Tend to only offer basic colors, though. I haven’t bought from them yet but am waiting on some d8s to get restocked for palettes."
+	}, {
+		"name": "The Dice Shop Online",
+		"url": "https://www.thediceshoponline.com",
+		"shipping": "?",
+		"minimum reduced shipping": undefined_minimum_shipping,
+		"price benchmark": {
+			"Chessex opaque": "£4.25",
+			"Chessex standard": "£10.00",
+		},
+		"selection": "wide",
+		"ships from": "UK",
+		"brands": "Chessex, Crit Hit Ceramics, Crystal Caste, HD Dice, GameScience, Q Workshop, +++",
+		"brand IDs": "yes",
+		"dice renamed": "no",
+		"filtering": "A",
+		"best for": "variety; UK orders; dice IDs",
+		"notes": "Big selection, and they list manufacturers, so they’re also good for IDing dice! I think they also have some originals, but nothing to write home about. Have not actually ordered from them, however. Oh nice, they offer Crit Hit Ceramics as individuals! Appealing if you want to try out the ceramics without dumping $$ on a full set."
+	}, {
+		"name": "Die Hard Dice",
+		"url": "https://www.dieharddice.com",
+		"shipping": "Free domestic on $20+, unspecified discount on international orders",
+		"minimum reduced shipping": 20.00,
+		"price benchmark": {
+			"HD Ancient": "$8.95",
+		},
+		"selection": "limited",
+		"ships from": "US - Utah",
+		"brands": "HD Dice, originals, +",
+		"brand IDs": "kinda (HD dice have a code in the description)",
+		"dice renamed": "?",
+		"filtering": "A",
+		"best for": "originals; freebies; first-time buyers",
+		"notes": "Specialize in fancy metal dice. Loads of originals in addition to a curated selection of HD Dice. Their originals tend to have cool nonstandard fonts, so very good for an extra fantasy feel. Their dice finder lets you browse by a number of helpful options, including DnD class for a curated selection of e.g. druid aesthetic dice. Write something in their notes field to get a freebie!"
+	}, {
+		"name": "DnD Dice",
+		"url": "https://dnddice.com",
+		"shipping": "no deal",
+		"minimum reduced shipping": no_minimum_shipping,
+		"price benchmark": {
+			"Chessex opaque": "$4.00",
+			"Chessex standard": "$10.00",
+			"Udixi conch": "$12.00",
+		},
+		"selection": "wide",
+		"ships from": "US",
+		"brands": "Chessex, Haxtec, Koplow, Q Workshop, Udixi, +++",
+		"brand IDs": "no",
+		"dice renamed": "?",
+		"filtering": "B",
+		"best for": "single dice",
+		"notes": "Pretty good selection, no manufacturers labeled. They offer limited sets as singles, which is kind of nice for palette-building. You might get a free sticker or other paraphernalia with your order. I’ve ordered several times because they were the first place I found Udixi sets."
+	}, {
+		"name": "Gametee",
+		"url": "https://gametee.co.uk",
+		"shipping": "?",
+		"minimum reduced shipping": undefined_minimum_shipping,
+		"price benchmark": {
+			"Udixi conch": "$12.30",
+		},
+		"selection": "limited",
+		"ships from": "UK",
+		"brands": "HD Dice, Udixi, +",
+		"brand IDs": "no",
+		"dice renamed": "?",
+		"filtering": "D",
+		"best for": "first-time buyers",
+		"notes": "This one just came across my radar, so I don’t know much about them. Sell a bunch of RPG accessories and a curated selection of dice. Haven’t ordered from them so can’t vouch for quality or anything."
+	}, {
+		"name": "Lindorm Dice",
+		"url": "https://www.lindormdice.com",
+		"shipping": "$4.00 worldwide",
+		"minimum reduced shipping": undefined_minimum_shipping,
+		"price benchmark": {
+			"Udixi conch": "$14.00",
+		},
+		"selection": "",
+		"ships from": "Germany",
+		"brands": "",
+		"brand IDs": "yes",
+		"dice renamed": "",
+		"filtering": "",
+		"best for": "international shipping",
+		"notes": "They don't have a search bar??",
+	}, {
+		"name": "Metallic Dice Games",
+		"url": "https://metallicdicegames.com",
+		"shipping": "Free on $50+ (US) or  $100+ (CAN)",
+		"minimum reduced shipping": 50.00,
+		"price benchmark": {
+			"HD Ancient": "$10.49",
+			"Udixi conch": "$13.99",
+		},
+		"selection": "wide",
+		"ships from": "US - Indiana",
+		"brands": "Udixi, originals, ++",
+		"brand IDs": "no",
+		"dice renamed": "?",
+		"filtering": "A- (search results are bloglike rather than a product grid)",
+		"best for": "first-time buyers",
+		"notes": "Okay so I developed an early dislike for MDG because I’m not a fan of how they number their gemstone dice. (Engravings look way better than stickers for dice that cost $60+!!) However, their non-gemstone selection is actually pretty good and well curated, and they have some plastic originals that are pretty fun. (The unicorn dice are their exclusive design, I think.) They also offer real filtering on their selection, not just dropdown menus! But, seriously, I can’t stand their gemstone sets."
+	}, {
+		"name": "Pippd",
+		"url": "#",
+		"shipping": "?",
+		"minimum reduced shipping": undefined_minimum_shipping,
+		"price benchmark": {},
+		"selection": "",
+		"ships from": "",
+		"brands": "",
+		"brand IDs": "",
+		"dice renamed": "",
+		"filtering": "A (can filter by brand)",
+		"best for": "",
+		"notes": ""
+	}, {
+		"name": "Viridian Dice",
+		"url": "https://viridiangaming.com",
+		"shipping": "Free on $35+ to domestic",
+		"minimum reduced shipping": 35.00,
+		"price benchmark": {
+			"HD Ancient": "$7.00",
+			"Udixi acrylic glitter*": "$7.25",
+			"Udixi conch": "$9.50",
+		},
+		"selection": "wide",
+		"ships from": "US - NY",
+		"brands": "Bescon, Chessex (soon), HD Dice, Q Workshop (soon), Udixi, ++",
+		"brand IDs": "Manufacturer SKU listed on each set",
+		"dice renamed": "Yes",
+		"filtering": "A",
+		"best for": "HD Dice / Udixi variety; dice IDs",
+		"notes": "Haven’t done a lot of research yet, but they have a huge selection and can be counted on for a lot of Bescon and HD Dice stock at solid prices. Their filters sidebar is pretty legit, and recently added ability to filter by manufacturer. They also sell some cool tabletop tools like condition rings."
+	}, {
+		"name": "Yvis Nerd and Geek World",
+		"url": "#",
+		"shipping": "?",
+		"minimum reduced shipping": undefined_minimum_shipping,
+		"price benchmark": {
+			"Chessex standard": "10.00€",
+			"HD Ancient": "7.00€",
+			"Udixi conch": "8.50€",
+		},
+		"selection": "",
+		"ships from": "Germany",
+		"brands": "",
+		"brand IDs": "",
+		"dice renamed": "",
+		"filtering": "",
+		"best for": "",
+		"notes": ""
+	}];
+
+	$(document).ready(function() {
+	    $('#dice-retailers').DataTable({
+			paging: false,
+			stateSave: true,
+			orderMulti: true,
+	        data: dataset,
+			columns: [
+				{
+					title: 'Name',
+					data: 'name',
+					render: function(data, type, row, meta) {
+			            if (type === 'display') {
+			                return '<a href="' + row.url + '">' + data + '</a>';
+			            }
+			            return data;
+			         }
+				}, {
+					title: 'Shipping',
+					data: 'minimum reduced shipping',
+					render: function(data, type, row, meta) {
+						if (type == 'display') {
+							return row.shipping;
+						}
+						return data;
+					}
+				},
+				{
+					title: 'Price Benchmarks',
+					data: 'price benchmark',
+					orderable: false,
+					className: 'benchmarks',
+					render: function(data, type, row, meta) {
+						if (type == 'display') {
+							let strings = [];
+							Object.keys(data).forEach(function(key) {
+								strings.push(key + ' ' + data[key]);
+							})
+							return strings.join('<br>');
+						}
+						return data;
+					}
+				},
+				{title: 'Good For', data: 'best for'},
+				{title: 'Ships From', data: 'ships from', searchable: false, className: 'ship-from'},
+				{title: 'Brands', data: 'brands'},
+				{title: 'Brand IDs', data: 'brand IDs', searchable: false},
+				{title: 'Dice Renamed?', data: 'dice renamed', searchable: false},
+				{title: 'Filtering', data: 'filtering', searchable: false},
+			],
+	    });
+	});
+	</script>
+</body>
+</html>
